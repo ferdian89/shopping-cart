@@ -18,6 +18,17 @@ passport.use('local.signup', new LocalStrategy ({
   passwordField: 'password',
   passReqToCallback: true
 }, function(req, email, password, done) {
+  req.checkBody('email', 'Invalid Email').notEmpty().isEmail();
+  req.checkBody('password', 'Invalid Password').notEmpty();
+  req.checkBody('password', "Password's length at least 5").isLength({min:4});
+  var errors = req.validationErrors();
+  if (errors) {
+    var messages = [];
+    errors.forEach(function(error) {
+      messages.push(error.msg);
+    });
+    return done(null, false, req.flash('error', messages));
+  }
   User.findOne({'email': email}, function(err, user) {
     if(err) {
       return done(err);
