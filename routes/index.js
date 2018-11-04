@@ -5,8 +5,8 @@ const passport = require('passport');
 
 const Product = require('../models/product');
 
-//const csrfProtection = csrf();
-//router.use(csrfProtection);
+const csrfProtection = csrf();
+router.use(csrfProtection);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -19,14 +19,11 @@ router.get('/', function(req, res, next) {
       res.render('shop/index', { title: 'Shopping Card', products: productChunk });
   });
 });
-/*
+
 router.get('/user/signup', function(req, res, next) {
   res.render('user/signup', {csrfToken: req.csrfToken()});
 });
-*/
-router.get('/user/signup', function(req, res, next) {
-  res.render('user/signup');
-});
+
 
 router.post('/user/signup', passport.authenticate('local.signup', {
   successRedirect: '/user/profile',
