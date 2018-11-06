@@ -34,7 +34,7 @@ passport.use('local.signup', new LocalStrategy ({
       return done(err);
     }
     if(user) {
-      return done(null, false, {message:'email is already use.'})
+      return done(null, false, {message:'email is already use.'});
     }
     var newUser = new User();
     newUser.email = email;
@@ -70,10 +70,10 @@ passport.use('local.signin', new LocalStrategy({
       return done(err);
     }
     if(!user) {
-      return done(null, false, {message:'user not found'})
+      return done(null, false, {message:'user not found'});
     }
     if(!user.validPassword(password)) {
-      return done(null, false, {message:'wrong password'})
+      return done(null, false, {message:'wrong password'});
     }
     return done(null, user);
   });

@@ -14,9 +14,13 @@
           User Management
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Signin</a>
-          <a class="dropdown-item" href="#">Login</a>
-          <a class="dropdown-item" href="#">Logout</a>
+          {{# if login }}
+          <a class="dropdown-item" href="http://localhost:3030/user/signup">User Account</a>
+          <a class="dropdown-item" href="http://localhost:3030/user/logout">Logout</a>
+          {{ else }}
+          <a class="dropdown-item" href="http://localhost:3030/user/signup">Sign up</a>
+          <a class="dropdown-item" href="http://localhost:3030/user/signin">Sign in</a>
+          {{/if }}
         </div>
       </li>
     </ul>
