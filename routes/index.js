@@ -35,4 +35,9 @@ router.get('/add-to-cart/:id', (req, res, next) => {
   });
 });
 
+
+router.get('/shopping-cart', function(req, res, next) {
+
+});
+
 module.exports = router;
